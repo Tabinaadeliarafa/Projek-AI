@@ -21,4 +21,10 @@ while True:
         id, confidence = recognizer.predict(gray[y:y+h, x:x+w])
         if(id == 1):
             id = "siti(18thn) {:. 2f}%".format(round(100 - confidence, 2))
-        cv2.rectangle(im, (x-22, y-90), )
+        cv2.rectangle(im, (x-22, y-90),(x+w+22, y-22), (252,192,203), -1)
+        cv2.putText(im, str(Id), (x-0,y-40), font, 1, (0,0,0), 3)
+    cv2.imshow('Deteksi mata dan wajah', im)
+    if cv2.waitKey(10) & 0xFF == ord('q'):
+        break
+    cam.release()
+    cv2.destroyAllWindows()
