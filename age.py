@@ -1,5 +1,6 @@
 import cv2
 import numpy as np
+import os
 
 # Path to model files
 age_prototxt = 'models/deploy_age.prototxt'
@@ -17,10 +18,10 @@ age_list = ['(0-2)', '(4-6)', '(8-12)', '(15-20)', '(25-32)', '(38-43)', '(48-53
 gender_list = ['Male', 'Female']
 
 # Initialize webcam
-cap = cv2.VideoCapture(0)
+cam = cv2.VideoCapture(0)
 
 while True:
-    ret, frame = cap.read()
+    ret, frame = cam.read()
     if not ret:
         break
     
@@ -45,7 +46,9 @@ while True:
     # Break loop on 'q' key press
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
+    if cv2.getWindowProperty('Age and Gender Recognition', cv2.WND_PROP_VISIBLE) < 1:
+        break
 
 # Release resources
-cap.release()
+cam.release()
 cv2.destroyAllWindows()
