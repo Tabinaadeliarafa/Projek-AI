@@ -1,6 +1,7 @@
 import cv2
 import numpy as np
 from mtcnn import MTCNN
+import tensorflow as tf
 from tensorflow.keras.models import load_model
 from tensorflow.keras.losses import Loss
 from tensorflow.keras.utils import register_keras_serializable

@@ -30,3 +30,4 @@ recognizer.train(faces, np.array(ids))
 
 assure_path_exists('trainer/')
 recognizer.save('trainer/trainer.yml')
+print("Model trained and saved successfully")

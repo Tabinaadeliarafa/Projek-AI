@@ -43,3 +43,4 @@ while True:
 
 cam.release()
 cv2.destroyAllWindows()
+print("Dataset collected successfully")

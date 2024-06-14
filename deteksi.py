@@ -8,7 +8,8 @@ def assure_path_exists(path):
         os.makedirs(dir)
 
 recognizer = cv2.face.LBPHFaceRecognizer_create()
-assure_path_exists("Trainer/")
+assure_path_exists("trainer/")
+recognizer.read('trainer/trainer.yml')
 cascadePath = "haarcascade_frontalface_default.xml"
 faceCascade = cv2.CascadeClassifier(cascadePath)
 font = cv2.FONT_HERSHEY_SIMPLEX
@@ -24,12 +25,17 @@ while True:
     for(x, y, w, h) in faces:
         cv2.rectangle(im, (x-20, y-20), (x+w+20, y+h+20), (252, 192,203), 2)
         id, confidence = recognizer.predict(gray[y:y+h, x:x+w])
-        if id == 1:
-            id_text = "siti(18thn) {:. 2f}%".format(round(100 - confidence, 2))
+        if confidence < 100:
+            if id == 1:
+                id_text = "siti(18thn) {:.2f}%".format(round(100 - confidence, 2))
+            else:
+                id_text = "unknown {:.2f}%".format(round(100 - confidence, 2))
+            cv2.rectangle(im, (x-22, y-90),(x+w+22, y-22), (252,192,203), -1)
+            cv2.putText(im, id_text, (x, y-40), font, 1, (0,0,0), 3)
         else:
-            id_text = "unknown {:. 2f}%".format(round(100 - confidence, 2))
-        cv2.rectangle(im, (x-22, y-90),(x+w+22, y-22), (252,192,203), -1)
-        cv2.putText(im, str(Id), (x-0,y-40), font, 1, (0,0,0), 3)
+            id_text = "unknown {:.2f}%".format(round(100 - confidence, 2))
+            cv2.rectangle(im, (x-22, y-90),(x+w+22, y-22), (252,192,203), -1)
+            cv2.putText(im, id_text, (x, y-40), font, 1, (0,0,0), 3)
 
     cv2.imshow('Eyes and Face Recognition', im)
     if cv2.waitKey(10) & 0xFF == ord('q'):
