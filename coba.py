@@ -1,12 +1,10 @@
 import cv2
 import numpy as np
-import tensorflow as tf
 from mtcnn import MTCNN
 from tensorflow.keras.models import load_model
-from tensorflow.keras.utils import register_keras_serializable
 from tensorflow.keras.losses import Loss
+from tensorflow.keras.utils import register_keras_serializable
 
-# Define custom loss function (if used)
 @register_keras_serializable()
 class CustomMeanSquaredError(Loss):
     def __init__(self, name='custom_mse'):

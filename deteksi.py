@@ -10,7 +10,7 @@ def assure_path_exists(path):
 recognizer = cv2.face.LBPHFaceRecognizer_create()
 assure_path_exists("Trainer/")
 cascadePath = "haarcascade_frontalface_default.xml"
-faceCascade = cv2.CascadeClassifier(cascadePath);
+faceCascade = cv2.CascadeClassifier(cascadePath)
 font = cv2.FONT_HERSHEY_SIMPLEX
 cam = cv2.VideoCapture(0)
 
@@ -31,10 +31,10 @@ while True:
         cv2.rectangle(im, (x-22, y-90),(x+w+22, y-22), (252,192,203), -1)
         cv2.putText(im, str(Id), (x-0,y-40), font, 1, (0,0,0), 3)
 
-    cv2.imshow('Deteksi mata dan wajah', im)
+    cv2.imshow('Eyes and Face Recognition', im)
     if cv2.waitKey(10) & 0xFF == ord('q'):
         break
-    if cv2.getWindowProperty('Deteksi mata dan wajah', cv2.WND_PROP_VISIBLE) < 1:
+    if cv2.getWindowProperty('Eyes and Face Recognition', cv2.WND_PROP_VISIBLE) < 1:
         break
 
 cam.release()

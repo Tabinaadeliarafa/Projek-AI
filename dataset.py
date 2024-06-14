@@ -36,10 +36,9 @@ while True:
                 
     cv2.imshow('Face and Eye Detection', frame)
 
-    k = cv2.waitKey(1) & 0xff
-    if k == ord('q'):
-        break 
-    elif count>100:
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        break
+    if cv2.getWindowProperty('Face and Eye Detection', cv2.WND_PROP_VISIBLE) < 1:
         break
 
 cam.release()
