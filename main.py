@@ -19,7 +19,7 @@ while True:
         break
     
     # Convert frame to blob
-    blob = cv2.dnn.blobFromImage(frame, 1, (227, 227), MODEL_MEAN_VALUES, swapRB=False)
+    blob = cv2.dnn.blobFromImage(frame, 1, (227, 227), MODEL_MEAN_VALUES, swapRB=True)
 
     # Predict gender
     gender_net.setInput(blob)
