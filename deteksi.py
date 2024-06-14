@@ -34,6 +34,8 @@ while True:
     cv2.imshow('Deteksi mata dan wajah', im)
     if cv2.waitKey(10) & 0xFF == ord('q'):
         break
+    if cv2.getWindowProperty('Deteksi mata dan wajah', cv2.WND_PROP_VISIBLE) < 1:
+        break
 
 cam.release()
 cv2.destroyAllWindows()

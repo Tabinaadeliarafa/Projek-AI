@@ -43,7 +43,7 @@ while True:
     cv2.putText(frame, label, (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2, cv2.LINE_AA)
     cv2.imshow('Age and Gender Recognition', frame)
 
-    # Break loop on 'q' key press
+    # Break loop on 'q' key pressed or window is closed
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
     if cv2.getWindowProperty('Age and Gender Recognition', cv2.WND_PROP_VISIBLE) < 1:
